@@ -59,7 +59,7 @@ class _RawState:
 class State:
     vehicle_pose: VehiclePose  # current AV position and velocity
     vehicle_station: float     # current 'station' that is the distance travelled along the centerline
-    lane_path: MultipleLanePath
+    lane_path: LanePath
     start_time: float
     dynamic_obstacles: List[DynamicObstacle]
     static_obstacles: List[StaticObstacle]
