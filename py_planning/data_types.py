@@ -88,7 +88,7 @@ def beatify_state(raw_state: _RawState) -> State:
     return State(
         start_time=raw_state.startTime,
         vehicle_pose=raw_state.vehiclePose,
-        vehicle_station=raw_state.staticObstacles,
+        vehicle_station=raw_state.vehicleStation,
         dynamic_obstacles=raw_state.dynamicObstacles,
         static_obstacles=raw_state.staticObstacles,
         lane_path=_merge_multiple_lane_paths(raw_state.lanePath)
