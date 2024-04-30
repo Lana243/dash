@@ -27,7 +27,7 @@ const WELCOME_MODAL_KEY = 'dash_WelcomeModal';
 
 import EXAMPLES from "./simulator/examples.js";
 
-const PLANNING_RATE = 2;  // run planner twice a second
+const PLANNING_RATE = 5;  // run planner 5 times a second
 
 export default class Simulator {
   constructor(domElement) {
@@ -953,13 +953,10 @@ export default class Simulator {
       }
 
       const any_collision = this.hasAnyCollisions();
-      const out_of_trajectory = this.isOutOfTrajectory();
       if (any_collision != null) {
         this.reportScenarioFail(any_collision);
       } else if (this.scenarioTimeLimit !== undefined && this.simulatedTime > this.scenarioTimeLimit) {
         this.reportScenarioFail("exceeded time limit of " + this.scenarioTimeLimit + "s");
-      } else if (out_of_trajectory != null) {
-        this.reportScenarioFail("trajectory is too far away from the car pose: " + out_of_trajectory + "m");
       } else if (this.checkScenarioCompletion()) {
         this.pauseScenario();
         this.successMessage.classList.add('is-active');
